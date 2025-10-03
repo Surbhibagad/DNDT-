@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>DNDT Technologies</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+<style>
+/* Base styles to match the image */
+:root {
+  --primary-blue: #062f77;
+  --dark-blue: #002b808a;
+  --light-blue: #f0f4ff;
+  --text-color: #222;
+  --gray-text: #444;
+  --light-gray: #f9f9f9;
+  --border-color: #ddd;
+  --footer-bg: #111a31;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  line-height: 1.5;
+  color: var(--text-color);
+  background-color: #fff;
+}
+
+.container {
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+a {
+  text-decoration: none;
+  color: var(--primary-blue);
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: var(--dark-blue);
+}
+
+ul {
+  list-style: none;
+}
+
+button {
+  cursor: pointer;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Header adjustments for 1:1 match */
+header {
+  background: white;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.header-top {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 5px 15px;
+  background-color: var(--primary-blue);
+  color: white;
+  font-size: 0.8rem;
+  gap: 20px;
+}
+
+.header-top a {
+  color: white;
+  opacity: 0.8;
+}
+
+.header-top a:hover {
+  opacity: 1;
+}
+
+.header-main {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 15px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--primary-blue);
+}
+
+.logo img {
+  height: 35px;
+  margin-right: 8px;
+}
+
+.nav-menu ul {
+  display: flex;
+  gap: 30px;
+}
+
+.nav-menu a {
+  color: var(--text-color);
+  font-weight: 250;
+  padding: 8px 0;
+}
+
+.nav-menu a:hover {
+  color: var(--primary-blue);
+}
+
+.auth-buttons {
+  display: flex;
+  gap: 8px;
+}
+
+.btn {
+  padding: 8px 15px;
+  border-radius: 4px;
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+
+.btn-primary {
+  background-color: var(--primary-blue);
+  color: #fff;
+  border: none;
+  transition: background-color 0.3s;
+}
+
+.btn-primary:hover {
+  background-color: var(--dark-blue);
+}
+
+.btn-secondary {
+  background-color: transparent;
+  color: var(--gray-text);
+  border: 1px solid var(--border-color);
+  transition: background-color 0.3s;
+}
+
+.btn-secondary:hover {
+  background-color: #f0f0f0;
+}
+
+/* Hero Section */
+.hero-section {
+  background: var(--light-gray);
+  padding: 80px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-content {
+  flex: 1;
+  max-width: 50%;
+}
+
+.hero-content h1 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+  line-height: 1.2;
+  font-weight: 700;
+}
+
+.hero-content p {
+  font-size: 1rem;
+  color: var(--gray-text);
+  margin-bottom: 25px;
+}
+
+.btn-shop {
+  background-color: var(--primary-blue);
+  color: #fff;
+  padding: 12px 30px;
+  border: none;
+  border-radius: 4px;
+  font-weight: 500;
+  transition: background-color 0.3s;
+}
+
+.btn-shop:hover {
+  background-color: var(--dark-blue);
+}
+
+.hero-image {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 50px;
+  position: relative;
+}
+
+.hero-image::after {
+  content: "DNDT";
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  background: rgba(255, 255, 255, 0.7);
+  padding: 5px 20px;
+  transform: skewX(-20deg);
+  font-weight: bold;
+  font-size: 1.2rem;
+  color: #555;
+}
+
+/* Products Section */
+.products-section {
+  padding: 60px 0;
+}
+
+.section-title {
+  font-size: 1.8rem;
+  text-align: center;
+  margin-bottom: 40px;
+  color: var(--primary-blue);
+}
+
+.product-grid {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.product-card {
+  background-color: var(--light-blue);
+  border-radius: 8px;
+  padding: 20px;
+  flex: 1 1 200px;
+  max-width: 230px;
+  text-align: left;
+  transition: transform 0.2s;
+  border: 1px solid var(--border-color);
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+}
+
+.product-card h3 {
+  font-size: 1.1rem;
+  color: var(--dark-blue);
+  margin-bottom: 8px;
+  font-weight: 700;
+}
+
+.product-card p {
+  font-size: 0.9rem;
+  color: var(--gray-text);
+}
+
+.product-card-special {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.product-card-special h3 {
+  font-size: 1.2rem;
+}
+
+/* Why Choose Us Section */
+.why-choose-section {
+  background-color: var(--light-gray);
+  padding: 60px 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 40px;
+}
+
+.why-text {
+  flex: 1;
+}
+
+.why-text h2 {
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+  color: var(--primary-blue);
+  font-weight: 600;
+}
+
+.why-text p {
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 15px;
+  color: var(--gray-text);
+}
+
+.why-text p strong {
+  color: var(--dark-blue);
+}
+
+.why-image {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.why-image img {
+  border-radius: 8px;
+}
+
+/* Trust Section */
+.trust-section {
+  background-color: #fff;
+  padding: 60px 0;
+  text-align: center;
+}
+
+.trust-badges {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  margin-bottom: 40px;
+}
+
+.trust-badge {
+  text-align: center;
+}
+
+.trust-badge img {
+  height: 60px;
+  margin-bottom: 10px;
+}
+
+.trust-badge p {
+  font-weight: 500;
+  color: var(--dark-blue);
+}
+
+.testimonials-heading {
+  font-size: 1.8rem;
+  color: var(--primary-blue);
+  margin-bottom: 30px;
+}
+
+.testimonial-grid {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.testimonial-card {
+  background-color: var(--light-gray);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 30px;
+  flex: 1 1 280px;
+  max-width: 350px;
+  text-align: center;
+}
+
+.testimonial-card p {
+  font-style: italic;
+  color: var(--gray-text);
+}
+
+.testimonial-card small {
+  display: block;
+  margin-top: 15px;
+  font-weight: 500;
+  color: var(--dark-blue);
+}
+
+/* Customers Section */
+.customers-section {
+  padding: 40px 0;
+  background-color: var(--light-gray);
+  text-align: center;
+}
+
+.customers-section h2 {
+  margin-bottom: 30px;
+  color: var(--primary-blue);
+  font-size: 1.8rem;
+}
+
+.customer-logos-grid {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 40px;
+  align-items: center;
+}
+
+.customer-logos-grid img {
+  height: 50px;
+  filter: grayscale(80%);
+  opacity: 0.6;
+  transition: filter 0.3s ease, opacity 0.3s ease;
+}
+
+.customer-logos-grid img:hover {
+  filter: grayscale(0%);
+  opacity: 1;
+}
+
+/* Footer */
+.footer {
+  background-color: var(--footer-bg);
+  color: #ccc;
+  padding: 40px 0 20px;
+}
+
+.footer-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 30px;
+}
+
+.footer-column {
+  flex: 1;
+  min-width: 200px;
+}
+
+.footer-column h4 {
+  color: #fff;
+  font-size: 1.1rem;
+  margin-bottom: 15px;
+}
+
+.footer-column ul {
+  list-style: none;
+}
+
+.footer-column li {
+  margin-bottom: 8px;
+}
+
+.footer-column a {
+  color: #ccc;
+}
+
+.footer-column p {
+  color: #ccc;
+  font-size: 0.9rem;
+  margin-bottom: 8px;
+}
+
+.footer-bottom {
+  text-align: center;
+  padding-top: 20px;
+  border-top: 1px solid #333;
+  margin-top: 30px;
+}
+
+.footer-bottom .made-with {
+  font-size: 0.7rem;
+  color: #777;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  margin-top: 5px;
+}
+
+.footer-bottom .made-with img {
+  height: 16px;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 992px) {
+  .header-main {
+    flex-direction: column;
+    gap: 15px;
+  }
+  .nav-menu ul {
+    gap: 15px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .hero-section {
+    flex-direction: column;
+    text-align: center;
+    padding: 50px 0;
+  }
+  .hero-content,
+  .hero-image {
+    max-width: 100%;
+    padding-right: 0;
+  }
+  .hero-image {
+    margin-top: 30px;
+    justify-content: center;
+  }
+  .hero-image::after {
+    left: 50%;
+    transform: translateX(-50%) skewX(-20deg);
+  }
+  .why-choose-section {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 768px) {
+  .header-top {
+    justify-content: center;
+  }
+  .products-section,
+  .why-choose-section,
+  .trust-section,
+  .customers-section,
+  .footer {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  .product-grid,
+  .testimonial-grid {
+    flex-direction: column;
+    align-items: center;
+  }
+  .product-card,
+  .testimonial-card {
+    max-width: 90%;
+  }
+  .footer-grid {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-top">
+    <span>📧 info@dndtlab.co.in</span>
+    <span>📞 +91 98679 45152</span>
+  </div>
+  <div class="header-main container">
+    <div class="logo">
+      <img src="DNDT.webp" alt="DNDT Technologies Logo">
+      DNDT Technologies (OPC) Private Limited
+    </div>
+    <nav class="nav-menu">
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#products">Product</a></li>
+        <li><a href="#contact">Contact</a></li>
+         <li><a href="#gallery">Gallery</a></li>
+       
+      </ul>
+    </nav>
+    <div class="auth-buttons">
+      <button class="btn btn-secondary">LogIn</button>
+      <button class="btn btn-primary">SignUp</button>
+    </div>
+  </div>
+</header>
+
+<section class="hero-section" id="home">
+  <div class="container" style="display: flex; align-items: center; justify-content: space-between;">
+    <div class="hero-content">
+      <h1>Welcome to DNDT Technologies</h1>
+      <p>The Leading NDT Products Manufacturer in India</p>
+      <p>DNDT Technologies (OPC) Private Limited is a company, based in Pune, Maharashtra, India and specializes in NDT products of highest standard in India.</p>
+    <button id="shop-now-btn" class="btn-shop">Shop Now</button>
+    </div>
+    <div class="hero-image">
+      <img src="p1.webp" alt="DNDT Product" />
+    </div>
+  </div>
+</section>
+
+<section class="products-section" id="products">
+  <div class="container">
+    <h2 class="section-title">Our Products<br>Explore Excellence with DNDT Technologies.</h2>
+    <div class="product-grid">
+      <div class="product-card">
+        <h3>UV LED LAMP</h3>
+        <p>A portable and reliable UV LED Lamp.</p>
+      </div>
+      <div class="product-card">
+        <h3>UV LED LAMP</h3>
+        <p>Advanced UV LED Lamps for various applications.</p>
+      </div>
+      <div class="product-card">
+        <h3>UV LED LAMP</h3>
+        <p>A high-performance UV LED Lamp for inspections.</p>
+      </div>
+      <div class="product-card">
+        <h3>UV & VIS MEASURING LAMP</h3>
+        <p>Measuring instruments for UV and visible light.</p>
+      </div>
+      <div class="product-card product-card-special">
+        <h3>Quality, Reliability, and Innovation in NDT</h3>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="why-choose-section" id="about">
+  <div class="container" style="display: flex; align-items: center; justify-content: space-between;">
+    <div class="why-text">
+      <h2>Why Choose Us</h2>
+      <p><strong>Experience:</strong> DNDT Technologies has been in the Manufacturing and Service sector for more than a decade now. Our vast experience will give you the perfect solution and product for your industry.</p>
+      <p><strong>Expertise:</strong> DNDT has a highly-qualified and early-solved and customer-oriented team of professionals for all your needs.</p>
+      <p><strong>Innovation:</strong> DNDT Technologies is committed to innovation and continuously invests in R&D to provide the latest technology-based products and solutions.</p>
+      <p><strong>Quality:</strong> DNDT Technologies is committed to providing customer-friendly and high-quality products. All our products are manufactured in accordance with global quality standards.</p>
+      <p><strong>Customer Support:</strong> We have a strong network of after-sales customer support. In case of any technical queries or doubts, our customer care representatives will always be there to help you.</p>
+      <p><strong>Mission</strong> To is a growth-oriented organization by providing appropriate NDT solutions by our innovative approach and advanced technologies.</p>
+      <p><strong>Vision</strong> To engage in sustainable practices and anticipate the needs of our customer. We will maximize return to stockholders while still maintaining the quality of our products and services.</p>
+
+    </div>
+    <div class="why-image">
+      <img src="WhatsApp Image 2025-09-29 at 12.52.22_7e72f4b7.jpg" alt="DNDT Factory" />
+    </div>
+  </div>
+</section>
+
+<section class="trust-section">
+  <div class="container">
+    <div class="trust-badges">
+      <div class="trust-badge">
+        <img src="1.webp" alt="ISO Certified" />
+        <p>ISO Certified Quality</p>
+      </div>
+      <div class="trust-badge">
+        <img src="2.webp" alt="SIT Certified" />
+        <p>SIT Certified</p>
+      </div>
+    </div>
+    <h2 class="testimonials-heading">Rock Solid Trust in Our Products</h2>
+    <div class="testimonial-grid">
+      <div class="testimonial-card">
+        <p>"DNDT Technologies' UV Led Handheld Lamps are a game-changer! We recently incorporated the DUVT-4B, and the results are outstanding. The portability and powerful UV illumination make it an indispensable tool for our NDT inspections."</p>
+        <small>- Mr. Sanjay Shitole</small>
+<small>-Faith Quality Services</small>
+      </div>
+      <div class="testimonial-card">
+        <p>"The UV Led Torch/Flashlights from DNDT Technologies are exceptional. We upgraded to the DUVT-9K, and the intensity is truly impressive. It's become an essential part of our toolkit for inspections, providing unmatched clarity and efficiency."
+"</p>
+        <small>- Mr. K Prasad</small>
+ <small>-Sri VNK Interprises</small>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="customers-section">
+  <div class="container">
+    <h2>Our Valued Customers</h2>
+    <div class="customer-logos-grid">
+      <img src="kalyani.webp" alt="Client 1 Logo" />
+      <img src="ULTRA.webp" alt="Client 2 Logo" />
+      <img src="NPCIL.webp" alt="Client 3 Logo" />
+      <img src="NTPC.webp" alt="Client 4 Logo" />
+      <img src="BEML.webp" alt="Client 5 Logo" />
+      <img src="MITSUBISHI.webp" alt="Client 6 Logo" />
+      <img src="LT.webp" alt="Client 7 Logo" />
+      <img src="API.webp" alt="Client 8 Logo" />
+      
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-column">
+        <h4>About Us</h4>
+        <p>We value your satisfaction and trust as our top priority. We offer competitive prices and flexible payment options for our NDT products and services.</p>
+             </div>
+      <div class="footer-column">
+        <h4>Pages</h4>
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#products">About</a></li>
+          <li><a href="#clients">Contact</a></li>
+          <li><a href="#contact">Gallery</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+         <h4>Contact</h4>
+        <p><strong>Phone:</strong> +91 9766699432</p>
+        <p><strong>Email:</strong> bhupendra@dndt.co.in</p>
+        <p><strong>Info:</strong> info@dndt.co.in</p>
+        <p>Address: SN.635/1B, FLAT NO 24 BUILDING B, GANESH VIHAR, NR CANARA BANK, BIBWEWADI, PUNE, MAHARASHTRA - 411037</p>
+
+      </div>
+      <div class="footer-column">
+        <h4>Social Media</h4>
+        <ul>
+          <li><a href="#">Facebook</a></li>
+          <li><a href="#">Twitter</a></li>
+          <li><a href="#">LinkedIn</a></li>
+        </ul>
+        <div class="why-image">
+      <img src="Untitled-design-10.webp" alt="DNDT Factory" />
+    </div>
+      </div>
+      <div class="footer-column">
+       
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2024 DNDT Technologies. All rights reserved.</p>
+      <div class="made-with">
+        <p>© 2025, DNDT Technologies (OPC) Private Limited – All rights reserved. Developed By : </p>
+        <img src="WEBJERRY-TECHNOLOGIES-PRIVATE-LIMITED-1.webp" alt="" />
+        <p></p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Smooth scrolling for nav links
+    document.getElementById('shop-now-btn').addEventListener('click', () => {
+    window.location.href = 'shop.html';
+});
+    const navLinks = document.querySelectorAll('.nav-menu a');
+    navLinks.forEach(link => {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href').substring(1);
+        const targetElement = document.getElementById(targetId);
+        if (targetElement) {
+          window.scrollTo({
+            top: targetElement.offsetTop - document.querySelector('header').offsetHeight,
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+  });
+</script>
+
+</body>
+</html>
